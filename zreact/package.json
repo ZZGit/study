@@ -1,0 +1,8 @@
+{
+  "name": "zreact",
+  "version": "1.0.0",
+  "description": "手写React",
+  "main": "index.js",
+  "author": "tom.yu",
+  "license": "MIT"
+}
