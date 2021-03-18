@@ -1,6 +1,7 @@
 # zreact
 
 ## 创建项目
+
 ```shell
 mkdir zreact && cd $_
 yarn add webpack webpack-cli webpack-dev-server -D
@@ -47,4 +48,55 @@ module.exports = {
         })
     ]
 };
+```
+
+## 配置babel
+
+```shell
+# 添加依赖
+yarn add @babel/core babel-loader @babel/preset-env @babel/preset-react -D
+#创建文件
+touch babel.config.json
+```
+
+babel.config.json文件内容
+```json
+{
+  "presets": ["@babel/preset-env", "@babel/preset-react"]
+}
+```
+
+webpack.config.js新增内容
+```json
+module.exports  = {
+    module: {
+        rules: [
+        {
+            test: /\.js$/,
+            exclude: /node_modules/,
+            use: ["babel-loader"]
+        }
+        ]
+    }
+  ...
+}
+```
+
+## 使用React
+```shell
+# 添加依赖
+yarn add react react-dom
+```
+
+修改 src/index.js
+```js
+import React, { useState } from "react";
+import { render } from "react-dom";
+
+function App() {
+    const [state, setState] = useState("CLICK ME");
+    return <button onClick={() => setState("CLICKED")}>{state}</button>;
+}
+
+render(<App />, document.getElementById("root"));
 ```
